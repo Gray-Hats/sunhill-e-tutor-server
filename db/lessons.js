@@ -1,5 +1,5 @@
 const db = require("./connection");
-const baseUri = "/api/lessons";
+const baseUri = "/api/lesson";
 
 module.exports = initStudent = (app) => {
     
@@ -49,7 +49,7 @@ module.exports = initStudent = (app) => {
     });
 
     //Add Lesson
-    app.post(baseUri + '/section', async (req, res) => {
+    app.post(baseUri + '/add', async (req, res) => {
         try {
             let uuid = req.body.uuid;
             let title = req.body.title;
