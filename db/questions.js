@@ -8,7 +8,7 @@ module.exports = initQuestion = (app) => {
         try {
             let exercise = req.body.exercise;
             
-            let sql = "SELECT * FROM questions WHERE exercise=?";
+            let sql = "SELECT * FROM questions WHERE exercise=? ORDERED by question_no";
             
             db.query(sql, [exercise], (err, result) => {
                 if (err) {

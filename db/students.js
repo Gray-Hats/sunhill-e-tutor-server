@@ -32,11 +32,11 @@ module.exports = initStudent = (app) => {
             let lname = req.body.lname;
             let fname = req.body.fname;
             let mname = req.body.mname;
-            let section = req.body.section;
+            let level = req.body.level;
 
-            let sql = "INSERT INTO sections VALUES(?,?,?,?,?,?)";
+            let sql = "INSERT INTO students VALUES(?,?,?,?,?,?)";
 
-            db.query(sql, [uuid,student_no,lname,fname,mname,section], (err, result) => {
+            db.query(sql, [uuid,student_no,lname,fname,mname,level], (err, result) => {
                 if(err){
                     console.log(err);
                     res.sendStatus(500);
@@ -60,11 +60,11 @@ module.exports = initStudent = (app) => {
             let lname = req.body.lname;
             let fname = req.body.fname;
             let mname = req.body.mname;
-            let section = req.body.section;
+            let level = req.body.level;
 
-            let sql = "UPDATE sections SET student_no=?, lname=?, fname=?. mname=?, section=? WHERE uuid=?";
+            let sql = "UPDATE students SET student_no=?, lname=?, fname=?. mname=?, level=? WHERE uuid=?";
 
-            db.query(sql, [student_no,lname,fname,mname,section,uuid], (err, result) => {
+            db.query(sql, [student_no,lname,fname,mname,level,uuid], (err, result) => {
                 if(err){
                     console.log(err);
                     res.sendStatus(500);

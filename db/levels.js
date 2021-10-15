@@ -1,13 +1,13 @@
 const db = require("./connection");
-const baseUri = "/api/section";
+const baseUri = "/api/levels";
 
-module.exports = initStudent = (app) => {
+module.exports = initLevels = (app) => {
     
     //Get Sections
     app.get(baseUri + '/all', async (req, res) => {
         try {
             
-            let sql = "SELECT * FROM sections";
+            let sql = "SELECT * FROM levels";
 
             db.query(sql, (err, result) => {
                 if(err){
@@ -31,7 +31,7 @@ module.exports = initStudent = (app) => {
             let uuid = req.body.uuid;
             let name = req.body.name;
 
-            let sql = "INSERT INTO sections VALUES(?,?)";
+            let sql = "INSERT INTO levels VALUES(?,?)";
 
             db.query(sql, [uuid,name], (err, result) => {
                 if(err){
@@ -55,7 +55,7 @@ module.exports = initStudent = (app) => {
             let uuid = req.body.uuid;
             let name = req.body.name;
 
-            let sql = "UPDATE sections SET name=? WHERE uuid=?";
+            let sql = "UPDATE levels SET name=? WHERE uuid=?";
 
             db.query(sql, [name,uuid], (err, result) => {
                 if(err){
@@ -78,7 +78,7 @@ module.exports = initStudent = (app) => {
         try {
             let uuid = req.body.uuid;
 
-            let sql = "DELETE FROM sections WHERE uuid=?";
+            let sql = "DELETE FROM levels WHERE uuid=?";
 
             db.query(sql, [uuid], (err, result) => {
                 if(err){

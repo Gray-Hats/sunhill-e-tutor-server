@@ -25,6 +25,30 @@ module.exports = initExercise = (app) => {
         }
     });
 
+    //Get All Exercises by level
+    app.post(baseUri + '/level', async (req, res) => {
+        try {
+            
+            let level = req.body.level;
+            
+            let sql = "SELECT exercises.* FROM exercises INNER JOIN lessons ON exercises.lesson=lessons.uuid WHERE lessons.level=?";
+            
+            db.query(sql, [level], (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(500);
+                }
+                else {
+                    res.json(result);
+                }
+            });
+        }
+        catch(e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    });
+
     //Get Exercises by lesson
     app.post(baseUri + '/lesson', async (req, res) => {
         try {

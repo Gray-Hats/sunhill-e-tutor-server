@@ -1,7 +1,7 @@
 const db = require("./connection");
 const baseUri = "/api/lesson";
 
-module.exports = initStudent = (app) => {
+module.exports = initLesson = (app) => {
     
     //Get All Lessons
     app.get(baseUri + '/all', async (req, res) => {
@@ -25,14 +25,14 @@ module.exports = initStudent = (app) => {
         }
     });
 
-    //Get Lesson by Section
-    app.post(baseUri + '/section', async (req, res) => {
+    //Get Lesson by Level
+    app.post(baseUri + '/level', async (req, res) => {
         try {
-            let section = req.body.section;
+            let level = req.body.level;
 
-            let sql = "SELECT * FROM lessons WHERE section=?";
+            let sql = "SELECT * FROM lessons WHERE level=?";
 
-            db.query(sql, [section], (err, result) => {
+            db.query(sql, [level], (err, result) => {
                 if(err){
                     console.log(err);
                     res.sendStatus(500);
@@ -54,11 +54,11 @@ module.exports = initStudent = (app) => {
             let uuid = req.body.uuid;
             let title = req.body.title;
             let uri = req.body.uri;
-            let section = req.body.section;
+            let level = req.body.section;
 
             let sql = "INSERT INTO lessons VALUES(?,?,?,?)";
 
-            db.query(sql, [uuid,title,uri,section], (err, result) => {
+            db.query(sql, [uuid,title,uri,level], (err, result) => {
                 if(err){
                     console.log(err);
                     res.sendStatus(500);
@@ -80,11 +80,11 @@ module.exports = initStudent = (app) => {
             let uuid = req.body.uuid;
             let title = req.body.title;
             let uri = req.body.uri;
-            let section = req.body.section;
+            let level = req.body.level;
 
-            let sql = "UPDATE lessons SET title=?, uri=?, section=? WHERE uuid=?";
+            let sql = "UPDATE lessons SET title=?, uri=?, level=? WHERE uuid=?";
 
-            db.query(sql, [title,uri,section,uuid], (err, result) => {
+            db.query(sql, [title,uri,level,uuid], (err, result) => {
                 if(err){
                     console.log(err);
                     res.sendStatus(500);
