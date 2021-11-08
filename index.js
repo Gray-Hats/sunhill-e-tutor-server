@@ -1,4 +1,6 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
+
 const app = express();
 const cors = require('cors');
 const config = require('./config');
@@ -8,9 +10,12 @@ const initStudent = require('./db/students');
 const initLesson = require('./db/lessons');
 const initExercise = require('./db/exercises');
 const initQuestion = require('./db/questions');
+const initTeacher = require('./db/teachers');
 
 app.use(cors());
 app.use(express.json());
+app.use(fileUpload());
+
 
 /*
 * PORT
@@ -24,3 +29,4 @@ initStudent(app);
 initLesson(app);
 initExercise(app);
 initQuestion(app);
+initTeacher(app);

@@ -1,13 +1,13 @@
 const db = require("./connection");
-const baseUri = "/api/student";
+const baseUri = "/api/teacher";
 
-module.exports = initStudent = (app) => {
+module.exports = initTeacher = (app) => {
 
-    //Get students
+    //Get teachers
     app.get(baseUri + '/all', async (req, res) => {
         try {
                         
-            let sql = "SELECT * FROM students";
+            let sql = "SELECT * FROM teachers";
 
             db.query(sql, (err, result) => {
                 if(err){
@@ -24,20 +24,20 @@ module.exports = initStudent = (app) => {
         }
     });
 
-     //Add Student
-     app.post(baseUri + '/add', async (req, res) => {
+    //Add Teachers
+    app.post(baseUri + '/add', async (req, res) => {
         try {
             let uuid = req.body.uuid;
-            let studentNo = req.body.studentNo;
             let lname = req.body.lname;
             let fname = req.body.fname;
             let mname = req.body.mname;
             let level = req.body.level;
+            let username = req.body.username;
             let password = req.body.password;
 
-            let sql = "INSERT INTO students VALUES(?,?,?,?,?,?,?)";
+            let sql = "INSERT INTO teachers VALUES(?,?,?,?,?,?,?)";
 
-            db.query(sql, [uuid,studentNo,lname,fname,mname,level,password], (err, result) => {
+            db.query(sql, [uuid,lname,fname,mname,level,username,password], (err, result) => {
                 if(err){
                     console.log(err);
                     res.sendStatus(500);
@@ -53,20 +53,20 @@ module.exports = initStudent = (app) => {
         }
     });
 
-    //Update Student
+    //Update Teacher
     app.post(baseUri + '/update', async (req, res) => {
         try {
             let uuid = req.body.uuid;
-            let student_no = req.body.student_no;
             let lname = req.body.lname;
             let fname = req.body.fname;
             let mname = req.body.mname;
             let level = req.body.level;
+            let username = req.body.username;
             let password = req.body.password;
 
-            let sql = "UPDATE students SET student_no=?, lname=?, fname=?. mname=?, level=?, password=? WHERE uuid=?";
+            let sql = "UPDATE students SET lname=?, fname=?. mname=?, level=?, username=?, password=? WHERE uuid=?";
 
-            db.query(sql, [student_no,lname,fname,mname,level,password,uuid], (err, result) => {
+            db.query(sql, [lname,fname,mname,level,username,password,uuid], (err, result) => {
                 if(err){
                     console.log(err);
                     res.sendStatus(500);

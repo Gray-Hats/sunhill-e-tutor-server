@@ -1,5 +1,7 @@
 const db = require("./connection");
 const baseUri = "/api/lesson";
+const UploadFile = require("../cloud/UploadFile");
+const DeleteFile = require("../cloud/DeleteFile");
 
 module.exports = initLesson = (app) => {
     
@@ -53,12 +55,21 @@ module.exports = initLesson = (app) => {
         try {
             let uuid = req.body.uuid;
             let title = req.body.title;
-            let uri = req.body.uri;
-            let level = req.body.section;
+            let description = req.body.description;
+            let level = req.body.level;
 
-            let sql = "INSERT INTO lessons VALUES(?,?,?,?)";
+            let file = req.files.file;
 
-            db.query(sql, [uuid,title,uri,level], (err, result) => {
+            let {url, bucketName} = await UploadFile(file, "lesson/"+level);
+
+            if(url === 'error'){
+                res.sendStatus(500);
+                return;
+            }
+
+            let sql = "INSERT INTO lessons VALUES(?,?,?,?,?,?)";
+
+            db.query(sql, [uuid,title,description,level,url,bucketName], (err, result) => {
                 if(err){
                     console.log(err);
                     res.sendStatus(500);
@@ -104,18 +115,23 @@ module.exports = initLesson = (app) => {
     app.post(baseUri + '/delete', async (req, res) => {
         try {
             let uuid = req.body.uuid;
+            let bucketName = req.body.bucketName;
 
-            let sql = "DELETE FROM lessons WHERE uuid=?";
+            let deleteRes = await DeleteFile(bucketName);
 
-            db.query(sql, [uuid], (err, result) => {
-                if(err){
-                    console.log(err);
-                    res.sendStatus(500);
-                }
-                else{
-                    res.json(result);
-                }
-            });
+            if(deleteRes){
+                let sql = "DELETE FROM lessons WHERE uuid=?";
+
+                db.query(sql, [uuid], (err, result) => {
+                    if(err){
+                        console.log(err);
+                        res.sendStatus(500);
+                    }
+                    else{
+                        res.json(result);
+                    }
+                });
+            }
         } 
         catch (e) {
             console.log(e);
