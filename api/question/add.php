@@ -24,7 +24,7 @@ if($type == "image") {
     if($upload) {
 
         try {
-            $sql = "INSERT INTO questions VALUES('$uuid', '$questionNo', '$exercise', '$type', '$description', '$answer', '$choices', $points , '$upload->url', '$upload->bucket_name') ";
+            $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '$upload->url', '$upload->bucket_name') ";
             
             $result = $db->query($sql);
             

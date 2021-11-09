@@ -10,7 +10,7 @@ if(!isset($_POST['exercise'])) {
 $exercise = $_POST['exercise'];
 
 try {
-    $sql = "SELECT * FROM questions WHERE exercise='$exercise'";
+    $sql = "SELECT * FROM questions WHERE exercise='$exercise' ORDER BY question_no";
     
     $result = $db->query($sql);
     
