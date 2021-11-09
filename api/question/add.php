@@ -24,10 +24,10 @@ if($_FILES['file']) {
     if($upload) {
 
         try {
-            $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points, '','')";
+            $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '', '') ";
             
             $result = $db->query($sql);
-            
+        
             echo json_encode($result);
         }
         catch (exception $e) {
