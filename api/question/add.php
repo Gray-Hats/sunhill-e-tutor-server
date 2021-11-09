@@ -19,26 +19,24 @@ $points = $_POST['points'];
 
 if($_FILES['file']) {
     
+    $upload = uploadFile($_FILES, "exercise/$exercise");
 
-    echo json_encode(true);
-    // $upload = uploadFile($_FILES, "exercise/$exercise");
+    if($upload) {
 
-    // if($upload) {
-
-    //     try {
-    //         $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '$upload->url','$upload->bucket_name') ";
+        try {
+            $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '$upload->url','$upload->bucket_name')";
             
-    //         $result = $db->query($sql);
+            $result = $db->query($sql);
             
-    //         echo json_encode($result);
-    //     }
-    //     catch (exception $e) {
-    //         echo json_encode(false);
-    //     }
-    // }
-    // else {
-    //     echo json_encode(false);
-    // }
+            echo json_encode($result);
+        }
+        catch (exception $e) {
+            echo json_encode(false);
+        }
+    }
+    else {
+        echo json_encode(false);
+    }
 
 }
 else {
