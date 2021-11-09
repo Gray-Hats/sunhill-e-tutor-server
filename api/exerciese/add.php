@@ -10,9 +10,10 @@ if(!isset($_POST['uuid'])) {
 $uuid = $_POST['uuid'];
 $title = $_POST['title'];
 $dueDate = $_POST['dueDate'];
+$level = $_POST['level'];
 
 try {
-    $sql = "INSERT INTO exercises VALUES('$uuid', '$title', '$dueDate')";
+    $sql = "INSERT INTO exercises VALUES('$uuid', '$title', '$dueDate', '$level')";
     
     $result = $db->query($sql);
     
