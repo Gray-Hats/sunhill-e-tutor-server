@@ -21,20 +21,14 @@ if($_FILES['file']) {
     
     $upload = uploadFile($_FILES, "exercise/$exercise");
 
-    if($upload) {
-
-        try {
-            $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '', '') ";
-            
-            $result = $db->query($sql);
+    try {
+        $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '$upload->url', '$upload->bucket_name') ";
         
-            echo json_encode($result);
-        }
-        catch (exception $e) {
-            echo json_encode(false);
-        }
+        $result = $db->query($sql);
+    
+        echo json_encode($result);
     }
-    else {
+    catch (exception $e) {
         echo json_encode(false);
     }
 
