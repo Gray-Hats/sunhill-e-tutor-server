@@ -10,7 +10,7 @@ if(!isset($_POST['level'])) {
 $level = $_POST['level'];
 
 try {
-    $sql = "SELECT * FROM exercise WHERE level='$level'";
+    $sql = "SELECT * FROM exercises WHERE level='$level'";
     
     $result = $db->query($sql);
     
