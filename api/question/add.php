@@ -17,11 +17,11 @@ $answer = $_POST['answer'];
 $choices = $_POST['choices'];
 $points = $_POST['points'];
 
-if($_FILES['file']) {
+if(isset($_FILES['file'])) {
     try {
-        //$upload = uploadFile($_FILES, "exercise/$exercise");
+        $upload = uploadFile($_FILES, "exercise/$exercise");
 
-        $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '', '') ";
+        $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '$upload->url', '$upload->bucket_name') ";
         
         $result = $db->query($sql);
         
