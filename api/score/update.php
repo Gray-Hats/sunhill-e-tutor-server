@@ -12,7 +12,7 @@ $exercise = $_POST['exercise'];
 $score = $_POST['score'];
 
 try {
-    $sql = "UPDATE scores SET score=$score WHERE student='$student' AND exercise='$exercise'";
+    $sql = "UPDATE scores SET score='$score' WHERE student='$student' AND exercise='$exercise'";
     
     $result = $db->query($sql);
     

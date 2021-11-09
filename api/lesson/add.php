@@ -15,10 +15,10 @@ $level = $_POST['level'];
 
 try {
 
-    $upload = uploadFile($_FILES, "lessons/$level");
+    $upload = uploadFile($_FILES, "lesson/$level");
 
     if($upload) {
-        
+
         $sql = "INSERT INTO lessons VALUES('$uuid', '$title', '$description', '$level', '$upload->url', '$upload->bucket_name')";
     
         $result = $db->query($sql);

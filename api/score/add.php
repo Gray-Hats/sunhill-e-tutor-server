@@ -12,7 +12,7 @@ $exercise = $_POST['exercise'];
 $score = $_POST['score'];
 
 try {
-    $sql = "INSERT INTO scores VALUES('$student', '$exercise', $score)";
+    $sql = "INSERT INTO scores VALUES('$student', '$exercise', '$score')";
     
     $result = $db->query($sql);
     
