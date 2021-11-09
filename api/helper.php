@@ -13,7 +13,7 @@ class UploadResult {
 
 
 function uploadFile($fileObj, $cloudPath) {
-    $bucketName = "deathcare-management-system";
+    $bucketName = "sunhill-e-learning-system";
     
     try {
         
@@ -49,7 +49,7 @@ function uploadFile($fileObj, $cloudPath) {
 }
 
 function deleteFile($filename) {
-    $bucketName = "deathcare-management-system";
+    $bucketName = "sunhill-e-learning-system";
     
     try {
         $storage = new StorageClient([
