@@ -17,7 +17,7 @@ $answer = $_POST['answer'];
 $choices = $_POST['choices'];
 $points = $_POST['points'];
 
-if($type == "image") {
+if($_FILES['file']) {
 
     $upload = uploadFile($_FILES, "exercise/$exercise");
 
