@@ -3,7 +3,7 @@
 require_once('../config.php');
 
 try {
-    $sql = "SELECT * FROM teachers";
+    $sql = "SELECT * FROM lessons";
     
     $result = $db->query($sql);
     
