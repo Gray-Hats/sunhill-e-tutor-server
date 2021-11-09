@@ -2,15 +2,15 @@
 
 require_once('../config.php');
 
-if(!isset($_POST['level'])) {
+if(!isset($_POST['uuid'])) {
     echo json_encode(false);
     return;
 }
 
-$level = $_POST['level'];
+$uuid = $_POST['uuid'];
 
 try {
-    $sql = "SELECT * FROM lessons WHERE level='$level'";
+    $sql = "SELECT * FROM teachers WHERE uuid='$uuid'";
     
     $result = $db->query($sql);
     
