@@ -18,14 +18,13 @@ $choices = $_POST['choices'];
 $points = $_POST['points'];
 
 if($_FILES['file']) {
-    
-    $upload = uploadFile($_FILES, "exercise/$exercise");
-
     try {
-        $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '$upload->url', '$upload->bucket_name') ";
+        $upload = uploadFile($_FILES, "exercise/$exercise");
+
+        $sql = "INSERT INTO questions VALUES('$uuid', $questionNo, '$exercise', '$type', '$description', '$answer', '$choices', $points , '', '') ";
         
         $result = $db->query($sql);
-    
+        
         echo json_encode($result);
     }
     catch (exception $e) {
