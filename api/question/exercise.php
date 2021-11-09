@@ -2,15 +2,15 @@
 
 require_once('../config.php');
 
-if(!isset($_POST['uuid'])) {
+if(!isset($_POST['exercise'])) {
     echo json_encode(false);
     return;
 }
 
-$uuid = $_POST['uuid'];
+$exercise = $_POST['exercise'];
 
 try {
-    $sql = "SELECT * FROM quesetions WHERE uuid='$uuid'";
+    $sql = "SELECT * FROM questions WHERE exercise='$exercise'";
     
     $result = $db->query($sql);
     
