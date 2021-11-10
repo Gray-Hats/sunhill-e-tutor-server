@@ -10,7 +10,7 @@ if(!isset($_POST['uuid'])) {
 $uuid = $_POST['uuid'];
 
 try {
-    $sql = "SELECT * FROM quesetions WHERE uuid='$uuid'";
+    $sql = "SELECT * FROM questions WHERE uuid='$uuid'";
     
     $result = $db->query($sql);
     
