@@ -15,7 +15,7 @@ $type = $_POST['type'];
 $totalScore = $_POST['totalScore'];
 
 try {
-    $sql = "INSERT INTO exercises VALUES('$uuid', '$title', '$dueDate', '$level', '$type', $totalScore)";
+    $sql = "INSERT INTO exercises VALUES('$uuid', '$title', '$dueDate', '$level', '$type')";
     
     $result = $db->query($sql);
     
