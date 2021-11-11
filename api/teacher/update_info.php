@@ -15,7 +15,7 @@ $level = $_POST['level'];
 $username = $_POST['username'];
 
 try {
-    $sql = "INSERT INTO teachers SET lname='$lname', fname='$fname', mname='$mname', level='$level', username='$username' WHERE uuid='$uuid'";
+    $sql = "UPDATE teachers SET lname='$lname', fname='$fname', mname='$mname', level='$level', username='$username' WHERE uuid='$uuid'";
     
     $result = $db->query($sql);
     

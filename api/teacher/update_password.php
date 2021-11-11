@@ -11,7 +11,7 @@ $uuid = $_POST['uuid'];
 $password = $_POST['password'];
 
 try {
-    $sql = "INSERT INTO teachers SET password='$password' WHERE uuid='$uuid'";
+    $sql = "UPDATE teachers SET password='$password' WHERE uuid='$uuid'";
     
     $result = $db->query($sql);
     
