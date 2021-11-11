@@ -12,9 +12,10 @@ $title = $_POST['title'];
 $dueDate = $_POST['dueDate'];
 $level = $_POST['level'];
 $type = $_POST['type'];
+$totalScore = $_POST['totalScore'];
 
 try {
-    $sql = "INSERT INTO exercises VALUES('$uuid', '$title', '$dueDate', '$level', '$type')";
+    $sql = "INSERT INTO exercises VALUES('$uuid', '$title', '$dueDate', '$level', '$type', $totalScore)";
     
     $result = $db->query($sql);
     
