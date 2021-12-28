@@ -11,7 +11,7 @@ $uuid = $_POST['uuid'];
 $status = $_POST['status'];
 
 try {
-    $sql = "UPDATE exercises SET status='$status'";
+    $sql = "UPDATE exercises SET status='$status' WHERE uuid='$uuid'";
     
     $result = $db->query($sql);
     
