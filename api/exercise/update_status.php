@@ -8,14 +8,10 @@ if(!isset($_POST['uuid'])) {
 }
 
 $uuid = $_POST['uuid'];
-$title = $_POST['title'];
-$dueDate = $_POST['dueDate'];
-$level = $_POST['level'];
-$type = $_POST['type'];
-$totalScore = $_POST['totalScore'];
+$status = $_POST['status'];
 
 try {
-    $sql = "INSERT INTO exercises VALUES('$uuid', '$title', '$dueDate', '$level', '$type','active')";
+    $sql = "UPDATE exercises SET status='$status'";
     
     $result = $db->query($sql);
     

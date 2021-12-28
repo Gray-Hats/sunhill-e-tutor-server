@@ -19,7 +19,7 @@ try {
 
     if($upload) {
 
-        $sql = "INSERT INTO lessons VALUES('$uuid', '$title', '$description', '$level', '$upload->url', '$upload->bucket_name')";
+        $sql = "INSERT INTO lessons VALUES('$uuid', '$title', '$description', '$level', '$upload->url', '$upload->bucket_name','active')";
     
         $result = $db->query($sql);
         
